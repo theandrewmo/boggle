@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block board %}
+    
+    {% for x in board %}
+        <div> {{x}} </div>
+    {% endfor %}
+
+    <form action="">
+        <input type="text" name="guess" id="guess" placeholder="guess" required>
+        <input type="submit" name="submit" id="submit">
+    </form>
+
+{% endblock %}
+
+{% block valid %}
+        <p>Result: </p>
+        <div id="valid">none</div>
+{% endblock %}
+
+{% block score %}
+        <p>Score: </p>
+        <div id="score">0</div>
+{% endblock %}
