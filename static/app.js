@@ -3,6 +3,9 @@ $(function() {
     // initializes game score 
 
     let score = 0
+    const guesses = new Set()
+    guesses.add('hi')
+    console.log(guesses)
 
     // starts game, renders a new board
 
@@ -18,7 +21,7 @@ $(function() {
             n--
             $('#timer').text(n)
             if (n === 0) {
-                $('#submit').prop('disabled', true) 
+                $('#submit').prop('disabled', true).removeClass('enabled').addClass('disabled') 
                 setTimeout(()=>{
                     clearInterval(i)
                     alert('Time is up')},100)
@@ -49,6 +52,7 @@ $(function() {
                 data: {'score': score} 
             })
             $('#totalGames').text(response.data.gamesPlayed)
+            $('#valid').text('Game over...')
         }
         catch (e) {
             console.log(e.message)
@@ -58,30 +62,29 @@ $(function() {
     //  accepts a string guess, and makes a request to the server which checks if guess word is valid 
 
     async function handleGuess(guess){
-        if (guess) {
-            try{
-                const response = await axios({
-                   url: `http://127.0.0.1:5000/check`,
-                   method: "POST", 
-                   data: {'guess': guess}
-                });
+        try{
+            const response = await axios({
+                url: `http://127.0.0.1:5000/check`,
+                method: "POST", 
+                data: {'guess': guess}
+            });
 
-                // display result to user
+            // display result to user
 
-                $('#valid').text(response.data.result)
+            setTimeout(()=>{$('#valid').text('guess again')},1500)
+            $('#valid').text(response.data.result)
 
-                // keep score, increases by length of guess word if guess was successful
+            // keep score, increases by length of guess word if guess was successful
 
-                if (response.data.result === 'ok') {
-                    score = score + guess.length;
-                    $('#score').text(score);
-                }
-
-                $('#guess').val('')
-            } 
-            catch(e) {
-                console.log(e.message)
+            if (response.data.result === 'ok') {
+                guesses.has(guess) ? null : score = score + guess.length
+                $('#score').text(score);
             }
+
+            $('#guess').val('')
+        } 
+        catch(e) {
+            console.log(e.message)
         }
     }
 })

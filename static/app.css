@@ -1,0 +1,84 @@
+body {
+    background: linear-gradient(0deg, rgb(48, 77, 152) 0 50%, rgb(36, 36, 39) 85% 100%);
+    color: rgb(244, 146, 9);
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 100vh;
+}
+
+h1 {
+    -webkit-text-stroke: 2px rgb(250, 248, 245);
+    font-size: 3em;
+    margin: 0px;
+}
+
+table {
+    background-color: rgb(244, 146, 9);
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    background-color: rgb(250, 248, 245);
+    color: rgb(4, 4, 4);
+    width: 40px;
+    height: 40px;
+    box-shadow: 2px 2px rgb(58, 57, 57);
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#start, #submit {
+    background-color: rgb(250, 248, 245);
+    margin: 15px;
+    font-size: 20px;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+#submit, #guess {
+    font-size: 15px;
+    padding: 5px;
+}
+
+#start:hover, .enabled:hover {
+    color:rgb(244, 146, 9)
+}
+
+#data {
+    color: rgb(250, 248, 245);
+}
+
+#data div {
+    padding: 7px;
+}
+
+#data span {
+    font-size: 25px;
+}
+
+/* #score, #timer {
+    display: inline-block;
+    width: 20px;
+}
+
+#data #totalGames {
+    display: inline-block;
+    width: 100px;
+}  */
+
+
+
+
+
+
+
+
+
+
+

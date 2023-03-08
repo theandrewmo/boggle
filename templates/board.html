@@ -1,29 +1,25 @@
 {% extends 'base.html' %}
 
 {% block board %}
-    
+    <table>
     {% for x in board %}
-        <div> {{x}} </div>
+        <tr>
+        {% for y in x %}
+        <td>{{ y }}</td>
+        {% endfor %}
+        </tr>
     {% endfor %}
+    </table>
 
     <form action="">
-        <input type="text" name="guess" id="guess" placeholder="guess" required>
-        <input type="submit" name="submit" id="submit">
+        <input type="text" name="guess" id="guess" placeholder="guess" required autofocus>
+        <input type="submit" name="submit" id="submit" class="enabled">
     </form>
 
 {% endblock %}
 
-{% block valid %}
-        <p>Result: </p>
-        <div id="valid">none</div>
-{% endblock %}
-
-{% block score %}
-        <p>Score: </p>
-        <div id="score">0</div>
-{% endblock %}
-
-{% block timer %}
-        <p>Timer: </p>
-        <div id="timer">60</div>
+{% block data %}
+    <div>Result: <span id="valid">enter a guess...</span></div>
+    <div>Score: <span id="score">0</span></div>
+    <div>Timer: <span id="timer">60</span></div>
 {% endblock %}

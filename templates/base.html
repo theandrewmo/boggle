@@ -14,19 +14,13 @@
 
     {% block board %}
     {% endblock %}
+    
+    <section id="data">
+        {% block data %}
+        {% endblock %}
 
-    {% block valid %}
-    {% endblock %}
-
-    {% block score %}
-    {% endblock %}
-
-    {% block timer %}
-    {% endblock %}
-
-    <p>Games Played: </p>
-    <div id="totalGames">{{games_played}}</div>
-
+        <div>Games Played: <span id="totalGames">{{games_played}}</span></div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>

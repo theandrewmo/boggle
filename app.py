@@ -40,6 +40,6 @@ def update_scores():
     """ receives the score at end of each game and increments the number of games played by 1 """
 
     session['games_played'] = session.get('games_played', 0) + 1
-    score = (request.json)['score']
+    score = int((request.json)['score'])
 
-    return jsonify(gamesPlayed = session['games_played'])
+    return jsonify(gamesPlayed = session['games_played'], score=score)
