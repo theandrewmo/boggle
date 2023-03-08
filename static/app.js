@@ -4,8 +4,6 @@ $(function() {
 
     let score = 0
     const guesses = new Set()
-    guesses.add('hi')
-    console.log(guesses)
 
     // starts game, renders a new board
 
@@ -52,7 +50,7 @@ $(function() {
                 data: {'score': score} 
             })
             $('#totalGames').text(response.data.gamesPlayed)
-            $('#valid').text('Game over...')
+            $('#result').text('Game over...')
         }
         catch (e) {
             console.log(e.message)
@@ -71,14 +69,18 @@ $(function() {
 
             // display result to user
 
-            setTimeout(()=>{$('#valid').text('guess again')},1500)
-            $('#valid').text(response.data.result)
+            setTimeout(()=>{$('#result').text('guess again')},1500)
+            $('#result').text(response.data.result)
 
             // keep score, increases by length of guess word if guess was successful
 
             if (response.data.result === 'ok') {
-                guesses.has(guess) ? null : score = score + guess.length
-                $('#score').text(score);
+                if (!(guesses.has(guess))) {
+                    score = score + guess.length
+                    guesses.add(guess)
+                } 
+                else $('#result').text('duplicate guess')
+                $('#score').text(score)
             }
 
             $('#guess').val('')
