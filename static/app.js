@@ -8,7 +8,7 @@ $(function() {
     // starts game, renders a new board
 
     $('#start').on('click', function() {
-        window.location='http://127.0.0.1:5000/board'
+        window.location='https://boggle.onrender.com/board'
     })
 
     // starts and displays a 60 second timer when a new game is started, when time is up it disables further guesses and alerts user
